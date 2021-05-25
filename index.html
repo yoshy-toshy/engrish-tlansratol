@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base target="_top">
+  <style>
+    body {
+      padding: 3rem 5rem;
+      background-color: #f8f8f8;
+    }
+
+    p {
+      text-align: justify;
+    }
+
+    textarea {
+      width: 100%;
+      height: 15rem;
+      box-sizing: border-box;
+      padding: 0.8rem 1rem;
+      font-size: 1.5rem;
+    }
+
+    .result-box {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.8rem 1rem;
+      background-color: #f3f3f3;
+    }
+
+    #result {
+      height: 12rem;
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .copyright {
+      margin-top: 1rem;
+      font-size: 0.5rem;
+      color: #888888;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Engrish Tlansratol</h1>
+  <p>This toor herps you tlansrate "Eng<strong>r</strong>ish" into "Eng<strong>l</strong>ish." Just input any Engrish text into the fierd, and the toor wirr convelt arr R's into L's, and L's into R's.</p>
+  <div>
+    <textarea id="textarea" class="textarea" oninput="onInput()"></textarea>
+  </div>
+  <div class="result-box">
+    <pre id="result"><pre>
+    </div>
+    <div class="copyright">Developed by TOSHY</div>
+    <script>
+      var textareaElement = document.getElementById("textarea")
+      var resultElement = document.getElementById("result")
+      function onInput() {
+        var letterMap = {
+          "r": "l",
+          "l": "r",
+          "R": "L",
+          "L": "R"
+        }
+        var originalText = textareaElement.value || ""
+        var convertedText = originalText.replace(/[rlRL]/g, function(targetLetter){
+          return letterMap[targetLetter];
+        });
+        resultElement.innerText = convertedText
+      }
+    </script>
+  </body>
+</html>
